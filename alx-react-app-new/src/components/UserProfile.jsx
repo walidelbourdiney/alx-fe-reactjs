@@ -1,4 +1,4 @@
-function UserProfile(props) {
+export default function UserProfile(props) {
   return (
     <div style={{ border: "1px solid gray", padding: "10px", margin: "10px" }}>
       <h2 style={{ color: "blue" }}>{props.name}</h2>
@@ -9,5 +9,3 @@ function UserProfile(props) {
     </div>
   );
 }
-
-export default UserProfile;

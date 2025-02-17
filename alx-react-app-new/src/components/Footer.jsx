@@ -1,6 +1,9 @@
 function Footer() {
+  const style = {
+    backgroundColor: "blue",
+  };
   return (
-    <footer>
+    <footer style={style}>
       <p>© 2023 City Lovers</p>
     </footer>
   );
