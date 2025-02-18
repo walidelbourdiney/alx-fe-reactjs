@@ -6,7 +6,7 @@ function WelcomeMessage() {
   const [count1, setCount1] = useState(0);
   const element = useRef();
   function handleClick() {
-    console.log(element);
+    console.log(element.current);
     element.current.style.width = "300px";
   }
   return (
