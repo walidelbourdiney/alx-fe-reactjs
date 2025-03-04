@@ -7,6 +7,8 @@ const RegistrationForm = () => {
     password: "",
   });
 
+  value = { email };
+  value = { password };
   function handleChange(e) {
     const { name, value } = e.target;
     setLogin((prevLogin) => ({ ...prevLogin, [name]: value }));
