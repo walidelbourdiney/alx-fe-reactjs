@@ -14,7 +14,7 @@ const RegistrationForm = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!username) console.log("Error");
+    if (!username) console.log("setErrors");
     if (!email) console.log("Error");
     if (!password) console.log("Error");
   }
