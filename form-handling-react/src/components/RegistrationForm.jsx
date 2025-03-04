@@ -6,7 +6,7 @@ const RegistrationForm = () => {
     email: "",
     password: "",
   });
-
+  value = { username };
   value = { email };
   value = { password };
   function handleChange(e) {
