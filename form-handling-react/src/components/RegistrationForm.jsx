@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const RegistrationForm = () => {
   const [login, setLogin] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -13,7 +13,7 @@ const RegistrationForm = () => {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    if (!login.name) {
+    if (!login.username) {
       console.log("Error");
     }
     if (!login.email) {
@@ -28,10 +28,10 @@ const RegistrationForm = () => {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        id="name"
-        name="name"
+        id="username"
+        name="username"
         onChange={handleChange}
-        value={login.name}
+        value={login.username}
       />
       <input
         type="email"
