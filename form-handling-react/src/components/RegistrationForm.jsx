@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Form, Field, ErrorMessage } from "formik";
 
 const RegistrationForm = () => {
   const [login, setLogin] = useState({
