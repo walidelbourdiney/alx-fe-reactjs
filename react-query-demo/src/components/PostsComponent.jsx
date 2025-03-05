@@ -19,7 +19,7 @@ const PostsComponent = () => {
     retry: 2, // Retry failed requests twice before throwing an error
   });
 
-  if (isLoading) return <p>Loading posts...</p>;
+  if (isLoading) return <p>cacheTime keepPreviousData</p>;
   if (error) return <p>Error: isError {error.message}</p>;
 
   return (
