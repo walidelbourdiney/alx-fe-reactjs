@@ -1,7 +1,7 @@
 import src from "../src/assets/react.svg";
 function UserProfile() {
   return (
-    <div className="bg-gray-100 p-4 sm:p-6 md:p-8 max-w-xs sm:max-w-sm mx-auto my-10 sm:my-16 md:my-20 rounded-lg shadow-lg text-center">
+    <div className="bg-gray-100 sm:p-4 sm:p-6 md:p-8 max-w-xs sm:max-w-sm mx-auto my-10 sm:my-16 md:my-20 rounded-lg shadow-lg text-center">
       <img
         src={src}
         alt="User"
