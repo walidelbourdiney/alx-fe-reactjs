@@ -1,14 +1,24 @@
-const data = [
+[
   {
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://via.placeholder.com/150"
-  },
-  {
-    "id": 2,
-    "title": "Chicken Tikka Masala",
-    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "https://via.placeholder.com/150"
+    "image": "https://via.placeholder.com/150",
+    "ingredients": [
+      "200g spaghetti",
+      "100g pancetta",
+      "2 large eggs",
+      "50g pecorino cheese",
+      "50g parmesan cheese",
+      "Freshly ground black pepper",
+      "Salt to taste"
+    ],
+    "instructions": [
+      "Boil the pasta in salted water until al dente.",
+      "Fry the pancetta until crispy.",
+      "Beat eggs with cheese and black pepper.",
+      "Mix hot pasta with pancetta and egg mixture off the heat.",
+      "Serve immediately with extra cheese."
+    ]
   }
 ]

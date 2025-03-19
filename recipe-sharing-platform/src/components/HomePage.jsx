@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const HomePage = () => {
+function HomePage() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
     fetch("/data.json")
-      .then((response) => response.json())
-      .then((data) => setRecipes(data))
-      .catch((error) => console.error("Error fetching recipes:", error));
+      .then((res) => res.json())
+      .then((data) => setRecipes(data));
   }, []);
 
   return (
@@ -19,23 +19,25 @@ const HomePage = () => {
         {recipes.map((recipe) => (
           <div
             key={recipe.id}
-            className="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow"
+            className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition"
           >
             <img
               src={recipe.image}
               alt={recipe.title}
               className="w-full h-40 object-cover rounded-md"
             />
-            <h2 className="text-xl font-semibold mt-4">{recipe.title}</h2>
-            <p className="text-gray-600 mt-2">{recipe.summary}</p>
-            <button className="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+            <h2 className="text-xl font-semibold mt-2">{recipe.title}</h2>
+            <p className="text-gray-600 text-sm">{recipe.summary}</p>
+            <Link
+              to={`/recipe/${recipe.id}`}
+              className="block mt-4 text-blue-500 hover:underline"
+            >
               View Recipe
-            </button>
+            </Link>
           </div>
         ))}
       </div>
     </div>
   );
-};
-
+}
 export default HomePage;
