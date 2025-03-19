@@ -14,7 +14,7 @@ function RecipeDetail() {
   if (!recipe) return <p className="text-center text-gray-500">Loading...</p>;
 
   return (
-    <div className="container mx-auto p-6 max-w-3xl">
+    <div className="container mx-auto p-6 max-w-3xl shadow">
       <h1 className="text-3xl font-bold mb-4">{recipe.title}</h1>
       <img
         src={recipe.image}
