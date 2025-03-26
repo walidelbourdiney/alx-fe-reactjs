@@ -1,14 +1,18 @@
+import axios from "axios";
+
+const BASE_URL = "https://api.github.com/users/";
+
 export default async function fetchUserData(username) {
   try {
-    const res = await fetch(`https://api.github.com/users/${username}`);
-
-    if (!res.ok) {
-      throw new Error(`User not found (${res.status})`);
-    }
-
-    return await res.json();
+    const res = await axios.get(`${BASE_URL}${username}`);
+    return res.data; // Axios automatically parses JSON
   } catch (error) {
-    console.error("Error fetching user data:", error);
-    throw error;
+    console.error(
+      "Error fetching user data:",
+      error.response?.data || error.message
+    );
+    throw new Error(
+      error.response?.data?.message || "Failed to fetch user data"
+    );
   }
 }
