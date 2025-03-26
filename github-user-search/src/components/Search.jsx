@@ -4,14 +4,23 @@ import fetchUserData from "../services/githubService";
 const Search = () => {
   const [name, setName] = useState("");
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (!name.trim()) return;
+    try{
+      if (!name.trim()) return;
+    setLoading("Loading...")
 
     const userData = await fetchUserData(name);
     setData(userData);
     setName("");
+    setLoading("")
+
+    }catch(error){
+      setLoading("Looks like we cant find the user");
+    }
+    
   }
 
   return (
@@ -32,6 +41,9 @@ const Search = () => {
           Search
         </button>
       </form>
+      {loading && (
+        <div className="mx-auto text-2xl text-center font-bold"><p>{loading}</p></div>
+      )}
 
       {data && (
         <div className="mt-6 p-4 border rounded-lg">
