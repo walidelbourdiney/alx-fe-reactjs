@@ -2,7 +2,6 @@ import axios from "axios";
 
 const BASE_URL = "https://api.github.com/search/users";
 
-
 export default async function fetchUserData({ username, location, repos }) {
   try {
     let query = [];
@@ -16,13 +15,18 @@ export default async function fetchUserData({ username, location, repos }) {
     }
 
     const url = `${BASE_URL}?q=${query.join("+")}`;
-    console.log(url);
     const res = await axios.get(url);
 
-    return res.data.items; 
+    if (!res.data.items || res.data.items.length === 0) {
+      throw new Error("No users found matching your search criteria.");
+    }
+
+    return res.data.items;
   } catch (error) {
-    console.error("Error fetching user data:", error.response?.data || error.message);
-    throw new Error(error.response?.data?.message || "Failed to fetch user data");
+    if (error.response?.status === 403) {
+      throw new Error("GitHub API rate limit exceeded. Please try again later.");
+    }
+    throw new Error(error.response?.data?.message || error.message || "Failed to fetch user data");
   }
 }
 
