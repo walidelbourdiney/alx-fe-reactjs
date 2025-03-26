@@ -1,18 +1,27 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.github.com/users/";
+const BASE_URL = "https://api.github.com/search/users";
 
-export default async function fetchUserData(username) {
+
+export default async function fetchUserData({ username, location, repos }) {
   try {
-    const res = await axios.get(`${BASE_URL}${username}`);
-    return res.data; // Axios automatically parses JSON
+    let query = [];
+
+    if (username) query.push(`${username} in:login`);
+    if (location) query.push(`location:${location}`);
+    if (repos) query.push(`repos:${repos}`);
+
+    if (query.length === 0) {
+      throw new Error("At least one search parameter is required.");
+    }
+
+    const url = `${BASE_URL}?q=${query.join("+")}`;
+    console.log(url);
+    const res = await axios.get(url);
+
+    return res.data.items; 
   } catch (error) {
-    console.error(
-      "Error fetching user data:",
-      error.response?.data || error.message
-    );
-    throw new Error(
-      error.response?.data?.message || "Failed to fetch user data"
-    );
+    console.error("Error fetching user data:", error.response?.data || error.message);
+    throw new Error(error.response?.data?.message || "Failed to fetch user data");
   }
 }
