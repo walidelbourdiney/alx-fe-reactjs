@@ -25,3 +25,5 @@ export default async function fetchUserData({ username, location, repos }) {
     throw new Error(error.response?.data?.message || "Failed to fetch user data");
   }
 }
+
+// ["https://api.github.com/search/users?q", "minRepos"]
